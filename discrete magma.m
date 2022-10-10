@@ -206,3 +206,163 @@ end function;
 
 
 
+// EXAMPLE OF Z * Z in Q_5
+
+p:=5;
+K := pAdicField(p);
+A := Matrix(2, [p , p-1, -1/p, 1/p^2]);
+B := Matrix(2, [2/p^4 , p^3, 1/p^3, p^4]);
+IsDiscrete(A,B,p);
+
+// EXAMPLE OF C2 * C3 in Q_7
+
+p := 7;
+K := pAdicField(p);
+t := 0;
+s := 1;
+A := Matrix(2, [0 , -1, 1, t]);
+B := Matrix(2, [0 , -1/p, p, s]);
+IsDiscrete(A,B,p);
+
+
+// EXAMPLE OF C2 * C5 in Q_11
+
+p := 11;
+K := pAdicField(p);
+O := RingOfIntegers(K);
+R<x> := PolynomialRing(K);
+t :=0;
+s := Roots(x^2-x-1)[1][1];
+A := Matrix(2, [0 , -1, 1, t]);
+B := Matrix(2, [0 , -1/p, p, s]);
+IsDiscrete(A,B,p);
+
+// EXAMPLE OF C2 * Z in Q_7
+
+p := 7;
+K := pAdicField(p);
+t := 0;
+A := Matrix(2, [0 , p^2, -1/p^2, t]);
+B := Matrix(2, [p^2 , p-1, 1, 1/p]);
+IsDiscrete(A,B,p);
+
+// EXAMPLE OF C4 * Z in Q_7
+
+p := 7;
+K := pAdicField(p);
+O := RingOfIntegers(K);
+R<x> := PolynomialRing(K);
+t := Roots(x^2-2)[1][1];
+A := Matrix(2, [0 , p^2, -1/p^2, t]);
+B := Matrix(2, [p^2 , p-1, 1, 1/p]);
+IsDiscrete(A,B,p);
+
+
+// EXAMPLE OF C3xZ in Q_7
+
+p := 7;
+K := pAdicField(p);
+O := RingOfIntegers(K);
+R<x> := PolynomialRing(K);
+a := Roots(x^3-1)[2][1];
+A := Matrix(2, [a , 0, 0, a^-1]);
+B := Matrix(2, [p, 0, 0, 1/p]);
+IsDiscrete(A,B,p);
+
+
+// EXAMPLE OF HNN EXT OF D3 in Q_13
+
+p := 13;
+K := pAdicField(p);
+O := RingOfIntegers(K);
+R<x> := PolynomialRing(K);
+t := 0;
+w := Roots(x^6-1)[3][1];
+s := w + w^-1;
+a := Roots((x^2-t*x+1)*(2-p^2-1/p^2)+t^2-2-s)[1][1];
+A := Matrix(2, [a , 1, a*(t-a)-1, t-a]);
+B := Matrix(2, [p, 0, 0, 1/p]);
+IsDiscrete(A,B,p);
+
+
+// EXAMPLE OF HNN EXT OF A4 in Q_7
+
+p := 7;
+K := pAdicField(p);
+O := RingOfIntegers(K);
+R<x> := PolynomialRing(K);
+t := 1;
+s := 1;
+a := Roots((x^2-t*x+1)*(2-p^2-1/p^2)+t^2-2-s)[1][1];
+A := Matrix(2, [a , 1, a*(t-a)-1, t-a]);
+B := Matrix(2, [p, 0, 0, 1/p]);
+IsDiscrete(A,B,p);
+
+
+// EXAMPLE OF D3 *_C2 D2 in Q_13
+
+p := 13;
+K := pAdicField(p);
+O := RingOfIntegers(K);
+R<x> := PolynomialRing(K);
+t := 0;
+w := Roots(x^6-1)[2][1];
+s := w + w^-1;
+a := Roots((x^2-t*x+1)*(2-p^2-1/p^2)+t^2-2-s)[1][1];
+A := Matrix(2, [a , 1, a*(t-a)-1, t-a]);
+B := Matrix(2, [p, 0, 0, 1/p]);
+IsDiscrete(A,B,p);
+
+// EXAMPLE OF A4 *_C3 D3 in Q_7
+
+p := 7;
+K := pAdicField(p);
+O := RingOfIntegers(K);
+R<x> := PolynomialRing(K);
+t := 1;
+s := 0;
+a := Roots((x^2-t*x+1)*(2-p^2-1/p^2)+t^2-2-s)[1][1];
+A := Matrix(2, [a , 1, a*(t-a)-1, t-a]);
+B := Matrix(2, [p, 0, 0, 1/p]);
+IsDiscrete(A,B,p);
+
+// EXAMPLE OF S4 *_C4 D4 in Q_17
+
+p := 17;
+K := pAdicField(p);
+O := RingOfIntegers(K);
+R<x> := PolynomialRing(K);
+t := Roots(x^2-2)[1][1];
+s := 1;
+a := Roots((x^2-t*x+1)*(2-p^2-1/p^2)+t^2-2-s)[1][1];
+A := Matrix(2, [a , 1, a*(t-a)-1, t-a]);
+B := Matrix(2, [p, 0, 0, 1/p]);
+IsDiscrete(A,B,p);
+
+// EXAMPLE OF A5 *_C3 D3 in Q_19
+
+p := 19;
+K := pAdicField(p);
+O := RingOfIntegers(K);
+R<x> := PolynomialRing(K);
+t := 1;
+s := Roots(x^2-x-1)[1][1];
+a := Roots((x^2-t*x+1)*(2-p^2-1/p^2)+t^2-2-s)[1][1];
+A := Matrix(2, [a , 1, a*(t-a)-1, t-a]);
+B := Matrix(2, [p, 0, 0, 1/p]);
+IsDiscrete(A,B,p);
+
+
+// EXAMPLE OF A5 *_C5 D5 in Q_11
+
+p := 11;
+K := pAdicField(p);
+O := RingOfIntegers(K);
+R<x> := PolynomialRing(K);
+t := Roots(x^2-x-1)[1][1];
+s := 1;
+a := Roots((x^2-t*x+1)*(2-p^2-1/p^2)+t^2-2-s)[1][1];
+A := Matrix(2, [a , 1, a*(t-a)-1, t-a]);
+B := Matrix(2, [p, 0, 0, 1/p]);
+IsDiscrete(A,B,p);
+
