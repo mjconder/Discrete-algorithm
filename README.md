@@ -1,6 +1,6 @@
 # Discrete algorithm
 
-The following is an implementation in Magma of an algorithm described in [1]. It takes as input a two-generator subgroup G of PSL(2,Q_p) (where Q_p denotes the p-adic numbers) and determines whether or not G is discrete.
+The following is an implementation in Magma of an algorithm described in [1]. It takes as input a two-generator subgroup G of PSL(2,Q_p) (where Q_p denotes the p-adic numbers) and determines whether or not G is discrete. We also include specific examples of each class in our classification.
 
 # References
 
