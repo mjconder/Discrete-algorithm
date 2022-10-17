@@ -6,7 +6,7 @@
 // output:
 //   true, "isomorphism type of G"        if G=<A,B> is discrete in PSL(2, Q_p)
 //   false, _                             if G not discrete
-//   "error", "precision too low".        ord(B);if precision argument needs to be increased
+//   "error", "precision too low".        if precision argument needs to be increased
 
 // we first define translation length of element of PSL(2, Q_p)
 TL := function (X, p)
