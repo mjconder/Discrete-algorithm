@@ -5,7 +5,7 @@
 //					  elts of PSL(2,Q_p), and precision=20 unless o/wise specified
 // output:
 //   true, "isomorphism type of G"        if G=<A,B> is discrete in PSL(2, Q_p)
-//   false, _                             if G not discrete
+//   false, generators of G               if G not discrete
 //   "error", "precision too low".        if precision argument needs to be increased
 
 // we first define translation length of element of PSL(2, Q_p)
@@ -139,7 +139,7 @@ IsDiscrete := function (A, B, p : precision:=20)
 
    // G is not discrete if X infinite order, otherwise replace Y by X^i*Y if smaller TL
    n := ord(X, p);
-   if n eq 0 then return false, _;
+   if n eq 0 then return false, [X,Y];
    else
       for i in [1..n-1] do
          if TL (X^i*Y, p) lt TL (Y, p) then Y := X^i*Y;
@@ -150,7 +150,7 @@ IsDiscrete := function (A, B, p : precision:=20)
    // checking for free product of two elliptic subgroups
    if TL (Y, p) eq 0 then
       m := ord(Y, p);
-      if m eq 0 or TL ( X*Y, p ) eq 0 then return false, _;
+      if m eq 0 or TL ( X*Y, p ) eq 0 then return false, [X,Y];
       else return true, ", G is isomorphic to free product of", GroupName(CyclicGroup(n)),
          "and", GroupName(CyclicGroup(m));
       end if;
@@ -163,20 +163,20 @@ IsDiscrete := function (A, B, p : precision:=20)
          "and Z";
    // checking for infinite order elliptics
    elif ord(comm, p) eq 0 then
-      return false, _;
+      return false, [X,Y];
    // checking for commuting generators
    elif ord(comm, p) eq 1 then
       return true, ", G is isomorphic to direct product of", GroupName(CyclicGroup(n)),
          "and Z";
    // checking for infinite order elliptics
    elif TL ( X * Y^2 * X^-1 * Y^-2, p ) eq 0 then
-      return false, _;
+      return false, [X,Y];
    end if;
 
    // final cases depending on G_0=<X,YXY^-1>
    G0 := id(X, Y*X*Y^-1, p);
    if G0 eq "infinite" then
-      return false, _;
+      return false, [X,Y];
    elif G0 in {"S4", "A5"} then
       return true, ", G is an amalgamated free product of", G0, "and", GroupName(DihedralGroup(n)),
       "over", GroupName(CyclicGroup(n));
